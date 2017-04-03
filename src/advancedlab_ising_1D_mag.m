@@ -56,9 +56,9 @@ energysq=energy.*energy; %row matrix of <E>^2
 magn=(1/trials)*sum(Magn);
 specificheat=(expenergysq-energysq); %specific heat but need to multiply by 1/T^2*****
 figure;
-S(1) = subplot(2,1,1);
-S(2) = subplot(2,1,2);
-S(3) = subplot(2,1,3);
+S(1) = subplot(3,1,1);
+S(2) = subplot(3,1,2);
+S(3) = subplot(3,1,3);
 plot(S(1),temp,energy,'o')
 title(S(1),'1D Energy vs. Temperature')
 xlabel(S(1),'Temperature (J/k)')
@@ -68,6 +68,6 @@ title(S(2),'1D Magnetization vs. Temperature')
 xlabel(S(2),'Temperature (J/k)')
 ylabel(S(2),'Magnetization')
 plot(S(3),temp,specificheat,'o')
-title(S(2),'1D Specific Heat vs. Temperature')
-xlabel(S(2),'Temperature (J/k)')
-ylabel(S(2),'Specific Heat')
+title(S(3),'1D Specific Heat vs. Temperature')
+xlabel(S(3),'Temperature (J/k)')
+ylabel(S(3),'Specific Heat')
