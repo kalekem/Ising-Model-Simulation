@@ -1,4 +1,4 @@
-nrows = 40;
+nrows = 40; %Beth is typing 
 trials=2000;
 runs=2000;
 tempf=7; %final temperature
