@@ -1,4 +1,4 @@
-nrows = 10;
+nrows = input('Please enter the number of rows: ');
 spinarr = randi(2,1,nrows)*2 - 3
 imagesc(spinarr)
 J=-1;

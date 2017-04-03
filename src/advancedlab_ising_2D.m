@@ -1,5 +1,5 @@
-nrows = 10;
-spinarr = randi(2,nrows)*2 - 3;
+nrows = input('Please enter the number of rows: ');
+spinarr = randi(2,nrows)*2 - 3
 J=-1;
 T=0;
 r=rand;
