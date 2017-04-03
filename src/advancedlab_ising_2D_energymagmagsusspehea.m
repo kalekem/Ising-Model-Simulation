@@ -1,4 +1,4 @@
-nrows=10;
+nrows=input('Please enter the number of rows: ');
 J=1;
 
 trials=2000;
