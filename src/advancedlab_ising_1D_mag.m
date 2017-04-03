@@ -1,4 +1,4 @@
-nrows = Input('Please enter the number of rows: '); %Beth is typing 
+nrows = input('Please enter the number of rows: '); %Beth is typing 
 trials=2000;
 runs=2000;
 tempf=7; %final temperature
