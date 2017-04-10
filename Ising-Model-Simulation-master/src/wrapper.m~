@@ -1,0 +1,10 @@
+%%wrapper
+%Asks the user for input to determine which script to run
+dimensions=0;
+choice='';
+while dimesions<1||dimensions>2
+    dimensions=input('Please enter the dimensions of the model (1 or 2)');
+end
+while choice~='latice'&&choice~='magnetization'
+    
+end
