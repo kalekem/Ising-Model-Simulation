@@ -17,13 +17,6 @@ r=rand; %random number between 0 and 1
 %Chooses the initial micro state and carries out a flip trial.
 %It also chooses a random spin inside the lattice and locates the top,
 %bottom, right and left neighbors
-
-spinarr = randi(2,1,nrows)*2 - 3;
-imagesc(spinarr);
-J=-1;
-T=3;
-r=rand;
-
 for i=1:30*nrows
     randcol=randi(nrows,1);
     randrow=randi(1,1);
