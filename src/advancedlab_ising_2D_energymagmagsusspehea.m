@@ -59,6 +59,7 @@ for T=0:0.10:7
     Index=round(10*T+1);
     Temp(Index) = T;
 end
+
 Temp;
 energy=(1/trials)*sum(Energy);
 magn=(1/trials)*sum(Magn);

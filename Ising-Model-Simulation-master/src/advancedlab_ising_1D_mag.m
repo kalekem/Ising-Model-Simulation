@@ -1,3 +1,6 @@
+
+
+
 nrows = input('Please enter the number of rows: ');
 trials=2000;
 runs=2000;
