@@ -1,7 +1,8 @@
 %{
 This function implements the 1-D Ising model. Ising Model is a mathematical
 model of ferromagnetism in statistical mechanics. The simulation uses the
-metropolis algorithm
+metropolis algorithm. This function specifically simulates the lattice
+model
 %}
 
 %Prompt the user to enter the number of rows
