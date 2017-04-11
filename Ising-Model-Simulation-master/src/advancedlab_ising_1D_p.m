@@ -10,8 +10,8 @@ nrows = input('Please enter the number of rows: ');
 spinarr = randi(2,1,nrows)*2 - 3; %creates a lattice of spins. Randomly created
 imagesc(spinarr); %Displays the image with scaled colors of the generated spins
 
-J=-1; %interaction energy of two spins
-T=3;
+J=-1; %interaction energy of spins
+T=3; %the value of the temperature
 r=rand; %random number between 0 and 1
 
 %Chooses the initial micro state and carries out a flip trial.
