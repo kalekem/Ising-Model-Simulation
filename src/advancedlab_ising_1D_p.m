@@ -1,9 +1,22 @@
+%{
+This function implements the 1-D Ising model. Ising Model is a mathematical
+model of ferromagnetism in statistical mechanics. The simulation uses the
+metropolis algorithm. This function specifically simulates the lattice
+model
+%}
+
+%Prompt the user to enter the number of rows
 nrows = input('Please enter the number of rows: ');
-spinarr = randi(2,1,nrows)*2 - 3;
-imagesc(spinarr)
-J+=-1;
-T=3;
-r=rand;
+spinarr = randi(2,1,nrows)*2 - 3; %creates a lattice of spins. Randomly created
+imagesc(spinarr); %Displays the image with scaled colors of the generated spins
+
+J=-1; %interaction energy of spins
+T=3; %the value of the temperature
+r=rand; %random number between 0 and 1
+
+%Chooses the initial micro state and carries out a flip trial.
+%It also chooses a random spin inside the lattice and locates the top,
+%bottom, right and left neighbors
 for i=1:30*nrows
     randcol=randi(nrows,1);
     randrow=randi(1,1);
@@ -17,18 +30,24 @@ for i=1:30*nrows
     else
         colr=randcol+1;
     end
+    
+    %calculates the total energy of the I-D system if a flip occurred
     E=J*spinarr(randrow,randcol)*spinarr(randrow,coll)+J*spinarr(randrow,randcol)*spinarr(randrow,colr);
-    if (E>=0)
+    
+    %if the total energy, E is less than zero, then accept the flips
+    if (E<=0) %Note this code was written before as 'if(E>=0') 
         spinarr(randrow,randcol)=-spinarr(randrow,randcol);
+    %otherwise, calculate the value of p. If p is greater than the value of r, then accept
+    %the trials, otherwise, reject the flips
     else
-        p=exp(E/T);
-        if (p>=r)
+        p=exp(E/T); %the probabilty of the energy change, E
+        if (p>=r) %accept the flips
             spinarr(randrow,randcol)=-spinarr(randrow,randcol);
-        else
+        else %reject the flips
             spinarr(randrow,randcol)=spinarr(randrow,randcol);
         end
     end
 end
-imagesc(spinarr)          
+imagesc(spinarr); %displays the scaled colored image          
             
     

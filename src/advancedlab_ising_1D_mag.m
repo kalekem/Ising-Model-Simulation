@@ -1,11 +1,18 @@
-nrows = input('Please enter the number of rows: '); 
-trials=2000;
-runs=2000;
+%{
+This function implements the 1-D magnetization Ising model.The simulation uses the
+metropolis algorithm. 
+%}
+
+%Prompt the user to enter the number of rows
+nrows = input('Please enter the number of rows: ');
+trials=2000; %number of trials
+runs=2000; %number of runs
 tempf=7; %final temperature
-J=1;
+J=1; %interaction energy of spins
+
 temp=zeros(1,tempf*10);
 Magn=zeros(trials,tempf*10); %matrix of zeros to keep values from for loop
-Energy=zeros(trials,tempf*10); 
+Energy=zeros(trials,tempf*10); %matrix of zeros for the sum of energies of each spin
 ExpEnergysq=zeros(trials,tempf*10); %matrix of zeros for expectation of Energy^2
 
 for T=0:0.1:tempf
@@ -24,24 +31,31 @@ for T=0:0.1:tempf
         else
             colr=randcol+1;
         end
+        
+        %total change in energy, E
         deltaE=2*J*spinarr(randrow,randcol)*(spinarr(randrow,coll)+spinarr(randrow,colr));
+        
+        %If total energy change is less than zero, accept the flips
         if (deltaE<=0)
             spinarr(randrow,randcol)=-spinarr(randrow,randcol);
+        %otherwise, calculate the value of p. If p is greater than the value of r, then accept
+        %the trials, otherwise, reject the flips
         else
-            p=exp(-deltaE/T);
-            if (p>=r)
+            p=exp(-deltaE/T); %the probabilty of the energy change, E
+            if (p>=r) %accept the flips
                 spinarr(randrow,randcol)=-spinarr(randrow,randcol);
-            else
+            else % reject the flips
                 spinarr(randrow,randcol)=spinarr(randrow,randcol);
             end
         end
+        
         if (i>runs)
-            mag=sum(spinarr);
-            absmag=abs(mag);
+            mag=sum(spinarr);%Sum of all the first column spins and the resulting row matrix
+            absmag=abs(mag);%the abolute value of the magnetization 
             indexm = round(10*T+1); 
             indexn = round(i-runs);
             Magn(indexn,indexm) = absmag;
-            Arl=spinarr.*circshift(spinarr,[0,-1]);
+            Arl=spinarr.*circshift(spinarr,[0,-1]);%Calculates the interacton in the right-left direction --changed x, y stays constant 
             Etot=-J*(sum(sum(Arl)));
             Energy(indexn,indexm)=Etot;
             Etotsq=Etot^2;
@@ -51,6 +65,7 @@ for T=0:0.1:tempf
     index=round(10*T+1);
     temp(index) = T;
 end
+
 energy=(1/trials)*sum(Energy);
 expenergysq=(1/trials)*sum(ExpEnergysq); %row matrix of <E^2>
 energysq=energy.*energy; %row matrix of <E>^2
