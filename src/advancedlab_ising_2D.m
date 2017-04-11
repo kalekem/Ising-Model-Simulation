@@ -1,5 +1,5 @@
 nrows = input('Please enter the number of rows: ');
-spinarr = randi(2,nrows)*2 - 3
+spinarr = randi(2,nrows)*2 - 3;
 J=-1;
 T=0;
 r=rand;
@@ -38,4 +38,4 @@ for i=1:30*nrows*nrows
         end
     end
 end
-imagesc(spinarr) 
+imagesc(spinarr)

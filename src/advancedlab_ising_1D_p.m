@@ -7,7 +7,6 @@ model
 
 %Prompt the user to enter the number of rows
 nrows = input('Please enter the number of rows: ');
-<<<<<<< HEAD
 spinarr = randi(2,1,nrows)*2 - 3; %creates a lattice of spins. Randomly created
 imagesc(spinarr); %Displays the image with scaled colors of the generated spins
 
@@ -18,13 +17,13 @@ r=rand; %random number between 0 and 1
 %Chooses the initial micro state and carries out a flip trial.
 %It also chooses a random spin inside the lattice and locates the top,
 %bottom, right and left neighbors
-=======
-spinarr = randi(2,1,nrows)*2 - 3
-imagesc(spinarr)
+
+spinarr = randi(2,1,nrows)*2 - 3;
+imagesc(spinarr);
 J=-1;
 T=3;
 r=rand;
->>>>>>> bf705ebf372ee67fe6b776c6b0cf3e73bae9df1c
+
 for i=1:30*nrows
     randcol=randi(nrows,1);
     randrow=randi(1,1);

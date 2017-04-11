@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 %{
 This function implements the 1-D magnetization Ising model.The simulation uses the
 metropolis algorithm. 
@@ -8,11 +7,10 @@ metropolis algorithm.
 nrows = input('Please enter the number of rows: ');
 trials=2000; %number of trials
 runs=2000; %number of runs
-=======
 nrows = input('Please enter the number of rows: ');
 trials=2000;
 runs=2000;
->>>>>>> bf705ebf372ee67fe6b776c6b0cf3e73bae9df1c
+
 tempf=7; %final temperature
 J=1; %interaction energy of spins
 
