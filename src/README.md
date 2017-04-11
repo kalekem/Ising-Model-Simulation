@@ -1,1 +1,1 @@
-"# Ising-Model-Simulation" 
+"#Ising Model in MatLab using the Metropolis Algorithm.  
