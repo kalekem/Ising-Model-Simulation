@@ -49,12 +49,12 @@ for i=1:30*nrows*nrows
     %otherwise, calculate the value of p. If p is greater than the value of r, then accept
     %the trials, otherwise, reject the flips
     else
-        p=exp(E/T); %p, is the probabilty of the energy change, E
-        if (p>=r)%accept the flips
+        p=exp(E/T);
+        if (p>=r)
             spinarr(randrow,randcol)=-spinarr(randrow,randcol);
-        else %reject the flips
+        else
             spinarr(randrow,randcol)=spinarr(randrow,randcol);
         end
     end
 end
-imagesc(spinarr)%displays the scaled colored image     
+imagesc(spinarr)

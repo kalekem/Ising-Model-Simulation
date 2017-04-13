@@ -35,7 +35,7 @@ for i=1:30*nrows
     E=J*spinarr(randrow,randcol)*spinarr(randrow,coll)+J*spinarr(randrow,randcol)*spinarr(randrow,colr);
     
     %if the total energy, E is less than zero, then accept the flips
-    if (E<=0) %Note this code was written before as 'if(E>=0') 
+    if (E<=0) 
         spinarr(randrow,randcol)=-spinarr(randrow,randcol);
     %otherwise, calculate the value of p. If p is greater than the value of r, then accept
     %the trials, otherwise, reject the flips
