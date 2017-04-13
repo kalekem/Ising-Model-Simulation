@@ -5,14 +5,15 @@ choice='c';
 while dimensions<1||dimensions>2
     dimensions=input('Please enter the dimensions of the model (1 or 2):  ');
 end
-while ~strcmp(choice,'m')&&~strcmp(choice,'m')
+while ~strcmp(choice,'m')&&~strcmp(choice,'l')
     choice=input('choose the model ((l)atices or (m)agnetization):  ','s');
 end
 if dimensions==1
     if strcmp(choice,'m')
-        advancedlab_ising_1D_p;
+       advancedlab_ising_1D_mag;
+       
     else
-        advancedlab_ising_1D_mag;
+       advancedlab_ising_1D_p;
     end
 else
     if strcmp(choice,'l')
