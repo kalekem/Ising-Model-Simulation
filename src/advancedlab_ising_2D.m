@@ -43,11 +43,10 @@ for i=1:30*nrows*nrows
     
     %calculates the total energy of the 2-D system if a flip occurred
     E=J*spinarr(randrow,randcol)*spinarr(randrow,coll)+J*spinarr(randrow,randcol)*spinarr(randrow,colr)+J*spinarr(randrow,randcol)*spinarr(rowu,randcol)+J*spinarr(randrow,randcol)*spinarr(rowd,randcol);
-     %if the total energy, E is less than zero, then accept the flips
+     %if the total energy, E decreases then accept the flips
     if (E<=0)
         spinarr(randrow,randcol)=-spinarr(randrow,randcol);
-    %otherwise, calculate the value of p. If p is greater than the value of r, then accept
-    %the trials, otherwise, reject the flips
+    %otherwise,if the energy increases then flip the probability of p = e-(beta delta E). 
     else
         p=exp(E/T); %p, is the probabilty of the energy change, E
         if (p>=r)%accept the flips

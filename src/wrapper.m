@@ -19,7 +19,7 @@ choice='c'; %the choice that user takes
 %in this case depend. If user enters a number less than 0 or greater than 2, an error is displayed 
 %and the user is prompted to enter the correct dimensions again
 while dimensions<1||dimensions>2
-    dimensions=input('Invalid value!Please enter the dimensions of the model (1 or 2):  ');
+    dimensions=input('Please enter the dimensions of the model (1 or 2):  ');
 end
 
 %allows the user to enter the choices for what model to run. The models are
@@ -27,7 +27,7 @@ end
 %'l' for latices, the latices model is run/displayed. If the user chooses 'm'
 %for magnetization, the magnetization is run/displayed
 while ~strcmp(choice,'l')&&~strcmp(choice,'m')
-    choice=input('choose the model ((l)atices or (m)agnetization):  ','s');
+    choice=input('choose the model ((l)atices or (m)agnetization): ','s');
 end
 
 %takes care of the choices that the user takes and displays the specified
@@ -43,7 +43,7 @@ if dimensions==1 %dimensions of 1 runs the 1-D models
 else
     if strcmp(choice,'l') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
         advancedlab_ising_2D;
-    else %otherwise the magnetization 2D model is displayed
+    else %otherwise the 2D magnetization  model is displayed
         advancedlab_ising_2D_energymagmagsusspehea
     end
 end
