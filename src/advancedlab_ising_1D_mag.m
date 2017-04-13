@@ -75,15 +75,22 @@ figure;
 S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
-plot(S(1),temp,energy,'o')
+x=0:0.1:7;
+pEnergy=polyfit(temp,energy,4);
+pMag=polyfit(temp,magn,4);
+pHeat=polyfit(temp,specificheat,4);
+yEnergy=polyval(pEnergy,x);
+yMag=polyval(pMag,x);
+yHeat=polyval(pHeat,x);
+plot(S(1),temp,energy,'o',x,yEnergy)
 title(S(1),'1D Energy vs. Temperature')
 xlabel(S(1),'Temperature (J/k)')
 ylabel(S(1),'Energy')
-plot(S(2),temp,magn,'o')
+plot(S(2),temp,magn,'o',x,yMag)
 title(S(2),'1D Magnetization vs. Temperature')
 xlabel(S(2),'Temperature (J/k)')
 ylabel(S(2),'Magnetization')
-plot(S(3),temp,specificheat,'o')
+plot(S(3),temp,specificheat,'o',x,yHeat)
 title(S(3),'1D Specific Heat vs. Temperature')
 xlabel(S(3),'Temperature (J/k)')
 ylabel(S(3),'Specific Heat')
