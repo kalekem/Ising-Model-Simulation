@@ -1,12 +1,21 @@
+%This program implements the 2-D magnetization Ising model.The simulation uses the
+%metropolis algorithm. 
+
+%Prompt the user to enter the number of rows
 nrows=input('Please enter the number of rows: ');
-J=1;
+J=1;%interaction energy of spins
 
-trials=2000;
+trials=2000;%number of trials
 Temp=zeros(1,71);
-Magn=zeros(trials,71);
-Energy=zeros(trials,71);
+Magn=zeros(trials,71);%matrix of zeros to keep values from for loop
+Energy=zeros(trials,71); %matrix of zeros for the sum of energies of each spin
+runs=4000;%number of runs
 
-runs=4000;
+%{
+Chooses the initial micro state and carries out a flip trial.
+It also chooses a random spin inside the lattice and locates the top,
+bottom, right and left neighbors
+%}
 for T=0:0.10:7
     spinarr=randi(2,nrows)*2-3;
     for i=1:trials+runs
@@ -33,20 +42,25 @@ for T=0:0.10:7
         else
             rowu=randrow+1;
         end
+        
+        %total change in energy, E, if a spin occurred
         deltaE=J*2*(spinarr(randrow,randcol)*(spinarr(randrow,coll)+spinarr(randrow,colr)+spinarr(rowu,randcol)+spinarr(rowd,randcol)));
+         %if the total energy, E decreases then accept the flips
         if (deltaE<=0)
             spinarr(randrow,randcol)=-spinarr(randrow,randcol);
+        %otherwise,if the energy increases then flip the probability of p = e-(beta delta E).
         else
-            p=exp(-deltaE/T);
-            if (p>=r)
+            p=exp(-deltaE/T);%p, is the probabilty of the energy change, E
+            if (p>=r)%accept the flips
                 spinarr(randrow,randcol)=-spinarr(randrow,randcol);
-            else
+            else %reject the flips
                 spinarr(randrow,randcol)=spinarr(randrow,randcol);
             end
         end
+        %Try more trials (both waiting for equilibrium and taking the data)
         if (i>runs)
-           mag=sum(sum(spinarr)); %M=u*Sum(s) so I sum all the spins first columns then the resulting row matrix
-           absmag=abs(mag); %take the abolute value of the magnetization so 
+           mag=sum(sum(spinarr)); %Sum of all the first column spins and the resulting row matrix
+           absmag=abs(mag); %take the abolute value of the magnetization  
            indexm = round(10*T+1); 
            indexn = round(i-runs);
            Magn(indexn,indexm) = absmag;
