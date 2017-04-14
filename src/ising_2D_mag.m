@@ -79,11 +79,16 @@ magn=(1/trials)*sum(Magn);
 figure;
 S(1) = subplot(2,1,1);
 S(2) = subplot(2,1,2);
-plot(S(1),Temp,energy,'o')
+x=0:0.1:7;
+pEnergy=polyfit(Temp,energy,4);
+pMag=polyfit(Temp,magn,4);
+yEnergy=polyval(pEnergy,x);
+yMag=polyval(pMag,x);
+plot(S(1),Temp,energy,'o',x,yEnergy)
 title(S(1),'2D Energy vs. Temperature')
 xlabel(S(1),'Temperature (J/k)')
 ylabel(S(1),'Energy')
-plot(S(2),Temp,magn,'o')
+plot(S(2),Temp,magn,'o',x,yMag)
 title(S(2),'2D Magnetization vs. Temperature')
 xlabel(S(2),'Temperature (J/k)')
 ylabel(S(2),'Magnetization')
