@@ -19,15 +19,16 @@ choice='c'; %the choice that user takes
 %in this case depend. If user enters a number less than 0 or greater than 2, an error is displayed 
 %and the user is prompted to enter the correct dimensions again
 while dimensions<1||dimensions>2
-    dimensions=input('Please enter the dimensions of the model (1 or 2):  ');
+    dimensions=input('Invalid dimensions. \nPlease enter the dimensions of the model (1 or 2):  ');
 end
 
 %allows the user to enter the choices for what model to run. The models are
 %either latice or magnetization. Again for simplicity, if the user choses
 %'l' for latices, the latices model is run/displayed. If the user chooses 'm'
 %for magnetization, the magnetization is run/displayed
+choice=input('Choose the model ((l)atices or (m)agnetization): ','s');
 while ~strcmp(choice,'l')&&~strcmp(choice,'m')
-    choice=input('choose the model ((l)atices or (m)agnetization): ','s');
+    choice=input('Invalid model choice. \nChoose the model ((l)atices or (m)agnetization): ','s');
 end
 
 %takes care of the choices that the user takes and displays the specified

@@ -70,20 +70,20 @@ energy=(1/trials)*sum(Energy);
 expenergysq=(1/trials)*sum(ExpEnergysq); %row matrix of <E^2>
 energysq=energy.*energy; %row matrix of <E>^2
 magn=(1/trials)*sum(Magn);
-specificheat=(expenergysq-energysq); %specific heat but need to multiply by 1/T^2*****
-figure;
+specificheat=(expenergysq-energysq); %specific heat but need to multiply by 1/T^2
+figure; %plots the energy, magnetization, and specific heat as functions of temperature
 S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
 x=0:0.1:7;
-pEnergy=polyfit(temp,energy,4);
+pEnergy=polyfit(temp,energy,4); %also calculates and plots a best fitting curve for each figure
 pMag=polyfit(temp,magn,4);
 pHeat=polyfit(temp,specificheat,4);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
 yHeat=polyval(pHeat,x);
 plot(S(1),temp,energy,'o',x,yEnergy)
-title(S(1),'1D Energy vs. Temperature')
+title(S(1),'1D Energy vs. Temperature') %properly labels and titles each figure
 xlabel(S(1),'Temperature (J/k)')
 ylabel(S(1),'Energy')
 plot(S(2),temp,magn,'o',x,yMag)
