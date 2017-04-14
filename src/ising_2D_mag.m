@@ -80,7 +80,7 @@ figure;
 S(1) = subplot(2,1,1);
 S(2) = subplot(2,1,2);
 x=0:0.1:7;
-pEnergy=polyfit(Temp,energy,4);
+pEnergy=polyfit(Temp,energy,4);%calculates and plots a best fitting curve for each figure
 pMag=polyfit(Temp,magn,4);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
