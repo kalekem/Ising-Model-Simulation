@@ -80,7 +80,6 @@ S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
 x=0:0.1:7;
-%pEnergy=polyfit(temp,energy,4); %uses polyfit to estimate the line of best fit
 pEnergy=polyfit(temp,energy,4); %also calculates and plots a best fitting curve for each figure
 pMag=polyfit(temp,magn,4);
 pHeat=polyfit(temp,specificheat,4);
