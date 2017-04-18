@@ -42,7 +42,7 @@ if dimensions==1 %dimensions of 1 runs the 1-D models
     end
 %this part of the statement runs the 2D model
 else
-    if strcmp(choice,'t') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
+    if strcmp(choice,'s') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
         ising_2D_lat;
     else %otherwise the 2D magnetization  model is displayed
         ising_2D_mag;
