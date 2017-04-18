@@ -105,12 +105,16 @@ magnsq=magn.*magn; %row matrix of <M>^2
 expmagnsq=(1/trials)*sum(magnsq); %Row Matrix of <M>^2
 magnsusp=tempinv.*(magnsq-expmagnsq); %Magnetic Susceptibility = beta(<E^2>-<E>^2) and beta = 1/kT, where k=1 so 1/T(<E^2>-<E>^2)
 
-%PolyVal and Polyfit to create a plot for the generl graph 
-x=0:0.1:tempf; %Does the 7 here mean the final energy value ? 
+%PolyVal and Polyfit to create a plot for the general graph 
+x=0:0.1:tempf;
 pEnergy=polyfit(Temp,energy,4);%calculates and plots a best fitting curve for each figure
 pMag=polyfit(Temp,magn,4);
+pHeat=polyfit(Temp,specificheat,4);
+pMagnsusp=polyfit(Temp,magnsusp,4);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
+yHeat=polyval(pHeat,x);
+yMagnsusp=polyval(pMagnsusp,x);
 %The figures, and the plots for each thermodynamic variable is diplayed
 %here 
 figure;
@@ -127,10 +131,11 @@ plot(S(2),Temp,magn,'o',x,yMag) %the additives are for the polyval values
 title(S(2),'2D Magnetization vs. Temperature')
 xlabel(S(2),'Temperature (J/k)')
 ylabel(S(2),'Magnetization')
-plot(S(3),Temp,specificheat,'o')
+plot(S(3),Temp,specificheat,'o',x,yHeat)
 title(S(3), '2D Specific Heat vs. Temperature')
 xlabel(S(3),'Temperature (J/k)')
 ylabel(S(3),'Specific Heat')
-plot(S(4),Temp,magnsusp,'o')
+plot(S(4),Temp,magnsusp,'o',x,yMagnsusp)
+title(S(4), '2d Magnetic Susceptibility vs. Temperature')
 xlabel(S(4),'Temperature (J/k)') 
 ylabel(S(4),'Magnetic Susceptibility')
