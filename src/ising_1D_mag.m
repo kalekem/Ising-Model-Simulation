@@ -2,18 +2,32 @@
 This program implements the 1-D magnetization Ising model.The simulation uses the
 metropolis algorithm. 
 %}
-
-%Prompt the user to enter the number of rows
-nrows = input('Please enter the number of rows: ');
-trials=2000; %number of trials
-runs=2000; %number of runs
-tempf=7; %final temperature
-J=1; %interaction energy of spins
-
-temp=zeros(1,tempf*10);
-Magn=zeros(trials,tempf*10); %matrix of zeros to keep values from for loop
-Energy=zeros(trials,tempf*10); %matrix of zeros for the sum of energies of each spin
-ExpEnergysq=zeros(trials,tempf*10); %matrix of zeros for expectation of Energy^2
+%USER INTERACTION: The parameters that the User can enter to specify the
+%system 
+%{
+This program implements the 2-D magnetization Ising model.The simulation uses the
+metropolis algorithm. 
+For our paper we had the following parameters to investigate the critical
+temperature 
+J=1 
+Size of Lattice (nrows) = 25
+tempf=5
+runs=90000
+trials=30000
+%}
+nrows=input('Please enter lattice size (nrows) '); %Prompt the user to enter the number of rows
+spinarr=randi(2,nrows)*2-3; %creates a lattice of just 1s and -1s
+runs=input('Please enter the number of runs: '); %Prompt the user to enter the number of runs
+trials=input('Please enter the number of trials: '); %Prompt the user to enter the number of trials 
+tempf=input('Please enter the Final Temperature Range you wish to investigate: '); %Prompt the user to enter the final temperate 
+%Assigned Values that are embeded in the code 
+J=1; %The assigned interactino energy of spins 
+Temp=zeros(1,tempf*10);
+tempinv=zeros(1,tempf*10);
+Magn=zeros(trials,tempf*10);
+Energy=zeros(trials,tempf*10);
+ExpEnergysq=zeros(trials,tempf*10); %Matrix of Zeros for expectation of Energy^2
+Magnsq=zeros(trials,tempf*10); %Matrix of zeros for expetation of Magnetization^2
 
 %{
 Chooses the initial micro state and carries out a flip trial.
@@ -76,10 +90,12 @@ energysq=energy.*energy; %row matrix of <E>^2
 magn=(1/trials)*sum(Magn);
 specificheat=(expenergysq-energysq); %specific heat but need to multiply by 1/T^2
 figure; %plots the energy, magnetization, and specific heat as functions of temperature
+
 S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
-x=0:0.1:7;
+
+x=0:0.1:tempf;
 pEnergy=polyfit(temp,energy,4); %also calculates and plots a best fitting curve for each figure
 pMag=polyfit(temp,magn,4);
 pHeat=polyfit(temp,specificheat,4);
