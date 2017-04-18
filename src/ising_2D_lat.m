@@ -56,4 +56,7 @@ for i=1:30*nrows*nrows
         end
     end
 end
-imagesc(spinarr)%displays the scaled colored image     
+imagesc(spinarr);%displays the scaled colored image 
+title('Spin Arrangement for 2D Model Lattice');
+xlabel('Number of Rows');
+ylabel('Number of Columns');
