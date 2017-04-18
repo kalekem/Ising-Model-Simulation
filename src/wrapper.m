@@ -12,7 +12,7 @@ functionality and usability
 %the dimensions are either 1(for 1D model) or 2 (for 2D model) 
 dimensions = input('Please enter the dimensions of the model (1 or 2):  '); 
 
-choice; %the choice that user takes
+choice ='c'; %the choice that user takes
 
 %the dimensions are between 0 and 2 but for simplicity and for the purpose of our project
 %we decided to make the dimensions either 1(for 1D model) or 2 (for 2D model)
