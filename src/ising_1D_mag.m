@@ -83,7 +83,6 @@ for T=0:0.1:tempf
     index=round(10*T+1);
     temp(index) = T;
 end
-
 energy=(1/trials)*sum(Energy);
 expenergysq=(1/trials)*sum(ExpEnergysq); %row matrix of <E^2>
 energysq=energy.*energy; %row matrix of <E>^2
@@ -96,9 +95,9 @@ S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
 
 x=0:0.1:tempf;
-pEnergy=polyfit(temp,energy,4); %also calculates and plots a best fitting curve for each figure
-pMag=polyfit(temp,magn,4);
-pHeat=polyfit(temp,specificheat,4);
+pEnergy=polyfit(temp,energy,tempf); %also calculates and plots a best fitting curve for each figure
+pMag=polyfit(temp,magn,tempf);
+pHeat=polyfit(temp,specificheat,tempf);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
 yHeat=polyval(pHeat,x);
