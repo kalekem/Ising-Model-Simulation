@@ -81,7 +81,7 @@ for T=0:0.1:tempf
         end
     end
     index=round(10*T+1);
-    temp(index) = T;
+    Temp(index) = T;
 end
 energy=(1/trials)*sum(Energy);
 expenergysq=(1/trials)*sum(ExpEnergysq); %row matrix of <E^2>
@@ -94,22 +94,22 @@ S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
 
-x=0:0.1:tempf;
-pEnergy=polyfit(temp,energy,tempf); %also calculates and plots a best fitting curve for each figure
-pMag=polyfit(temp,magn,tempf);
-pHeat=polyfit(temp,specificheat,tempf);
+x=0:0.01:tempf;
+pEnergy=polyfit(Temp,energy,tempf); %also calculates and plots a best fitting curve for each figure
+pMag=polyfit(Temp,magn,tempf);
+pHeat=polyfit(Temp,specificheat,tempf);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
 yHeat=polyval(pHeat,x);
-plot(S(1),temp,energy,'o',x,yEnergy)
+plot(S(1),Temp,energy,'o',x,yEnergy)
 title(S(1),'1D Energy vs. Temperature') %properly labels and titles each figure
 xlabel(S(1),'Temperature (J/k)')
 ylabel(S(1),'Energy')
-plot(S(2),temp,magn,'o',x,yMag)
+plot(S(2),Temp,magn,'o',x,yMag)
 title(S(2),'1D Magnetization vs. Temperature')
 xlabel(S(2),'Temperature (J/k)')
 ylabel(S(2),'Magnetization')
-plot(S(3),temp,specificheat,'o',x,yHeat)
+plot(S(3),Temp,specificheat,'o',x,yHeat)
 title(S(3),'1D Specific Heat vs. Temperature')
 xlabel(S(3),'Temperature (J/k)')
 ylabel(S(3),'Specific Heat')
