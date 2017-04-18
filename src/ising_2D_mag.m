@@ -1,3 +1,4 @@
+
 %USER INTERACTION: The parameters that the User can enter to specify the
 %system 
 %{
@@ -22,7 +23,7 @@ J=1; %The assigned interactino energy of spins
 Temp=zeros(1,tempf*10);
 tempinv=zeros(1,tempf*10);
 Magn=zeros(trials,tempf*10);
-Energy=zeros(trials,tempf*10)
+Energy=zeros(trials,tempf*10);
 ExpEnergysq=zeros(trials,tempf*10); %Matrix of Zeros for expectation of Energy^2
 Magnsq=zeros(trials,tempf*10); %Matrix of zeros for expetation of Magnetization^2
 %{
@@ -96,13 +97,13 @@ Temp;
 %Suspetibility are below 
 energy=(1/trials)*sum(Energy);
 energysq=(1/trials)*sum(ExpEnergysq); %row of matrix of <E^2>
-energysq=energy.*energy;
+energysq1=energy.*energy;
 magn=(1/trials)*sum(Magn);
 tempinvsquared=tempinv.*tempinv; %row matrix of 1/T^2
-specificheat=tempinvsquared.*(energysq-energysq); %specific heat
+specificheat=tempinvsquared.*(energysq-energysq1); %specific heat
 magnsq=magn.*magn; %row matrix of <M>^2
 expmagnsq=(1/trials)*sum(magnsq); %Row Matrix of <M>^2
-magnsusp=tempinv.*(expmagnsq-magnsq); %Magnetic Susceptibility = beta(<E^2>-<E>^2) and beta = 1/kT, where k=1 so 1/T(<E^2>-<E>^2)
+magnsusp=tempinv.*(magnsq-expmagnsq); %Magnetic Susceptibility = beta(<E^2>-<E>^2) and beta = 1/kT, where k=1 so 1/T(<E^2>-<E>^2)
 
 %PolyVal and Polyfit to create a plot for the generl graph 
 x=0:0.1:tempf; %Does the 7 here mean the final energy value ? 
