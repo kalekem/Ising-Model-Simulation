@@ -10,9 +10,9 @@ functionality and usability
 
 %prompt the user to enter the dimensions of the models
 %the dimensions are either 1(for 1D model) or 2 (for 2D model) 
-dimensions = input('Please enter the dimensions of the model (1 or 2):  '); 
+dimensions = input('Please enter the dimensions of Ising Model (1 or 2):  '); 
 
-choice ='c'; %the choice that user takes
+choice='c'; %the choice that user takes
 
 %the dimensions are between 0 and 2 but for simplicity and for the purpose of our project
 %we decided to make the dimensions either 1(for 1D model) or 2 (for 2D model)
@@ -26,15 +26,15 @@ end
 %either latice or magnetization. Again for simplicity, if the user choses
 %'l' for latices, the latices model is run/displayed. If the user chooses 'm'
 %for magnetization, the magnetization is run/displayed
-choice=input('Choose the model ((l)atices or (m)agnetization): ','s');
-while ~strcmp(choice,'l')&&~strcmp(choice,'m')
-    choice=input('Invalid model choice. \nChoose the model ((l)atices or (m)agnetization): ','s');
+choice=input('Spin Arrangment (s) or ThermoDynamic Properties (t) ? ','s');
+while ~strcmp(choice,'s')&&~strcmp(choice,'T')
+    choice=input('Invalid model choice. \n Spin Arrangment (s) or Thermodynamic Properties (t)','s');
 end
 
 %takes care of the choices that the user takes and displays the specified
 %model
 if dimensions==1 %dimensions of 1 runs the 1-D models
-    if strcmp(choice,'l') %if the user chooses 'l', the 1D lattice model is displayed
+    if strcmp(choice,'s') %if the user chooses 'l', the 1D lattice model is displayed
         ising_1D_lat;    
     %otherwise the 1D magnetization model is displayed
     else
@@ -42,7 +42,7 @@ if dimensions==1 %dimensions of 1 runs the 1-D models
     end
 %this part of the statement runs the 2D model
 else
-    if strcmp(choice,'l') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
+    if strcmp(choice,'m') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
         ising_2D_lat;
     else %otherwise the 2D magnetization  model is displayed
         ising_2D_mag;
