@@ -34,7 +34,7 @@ Chooses the initial micro state and carries out a flip trial.
 It also chooses a random spin inside the lattice and locates the top,
 bottom, right and left neighbors
 %}
-for T=0:0.1:tempf
+for T=0.1:0.1:tempf
     spinarr = randi(2,1,nrows)*2 - 3;
     for i=1:trials+runs
         randcol=randi(nrows,1);
@@ -94,7 +94,7 @@ S(1) = subplot(3,1,1);
 S(2) = subplot(3,1,2);
 S(3) = subplot(3,1,3);
 
-x=0:0.01:tempf;
+x=0.1:0.01:tempf;
 pEnergy=polyfit(Temp,energy,tempf); %also calculates and plots a best fitting curve for each figure
 pMag=polyfit(Temp,magn,tempf);
 pHeat=polyfit(Temp,specificheat,tempf);

@@ -34,7 +34,7 @@ Chooses the initial micro state and carries out a flip trial.
 It also chooses a random spin inside the lattice and locates the top,
 bottom, right and left neighbors
 %}
-for T=0:0.10:tempf
+for T=0.10:0.10:tempf
     for i=1:trials+runs
         randcol=randi(nrows,1);
         randrow=randi(nrows,1);
@@ -109,7 +109,7 @@ expmagnsq=(1/trials)*sum(magnsq); %Row Matrix of <M>^2
 magnsusp=tempinv.*(magnsq-expmagnsq); %Magnetic Susceptibility = beta(<E^2>-<E>^2) and beta = 1/kT, where k=1 so 1/T(<E^2>-<E>^2)
 
 %PolyVal and Polyfit to create a plot for the general graph 
-x=0:0.1:tempf;
+x=0.1:0.1:tempf;
 pEnergy=polyfit(Temp,energy,4);%calculates and plots a best fitting curve for each figure
 pMag=polyfit(Temp,magn,4);
 pHeat=polyfit(Temp,specificheat,4);
