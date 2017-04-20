@@ -1,4 +1,3 @@
-
 %USER INTERACTION: The parameters that the User can enter to specify the
 %system 
 %{
@@ -99,32 +98,28 @@ Temp;
 %The Calculations for Energy, Magnetization, Specific Heat and Magnetic
 %Suspetibility are below 
 energy=(1/trials)*sum(Energy);
-energysq=(1/trials)*sum(ExpEnergysq); %row of matrix of <E^2>
-energysq1=energy.*energy;
+expenergysq=(1/trials)*sum(ExpEnergysq); %row of matrix of <E^2>
+energysq=energy.*energy;
 magn=(1/trials)*sum(Magn);
 tempinvsquared=tempinv.*tempinv; %row matrix of 1/T^2
-specificheat=tempinvsquared.*(energysq-energysq1); %specific heat
-magnsq=magn.*magn; %row matrix of <M>^2
-expmagnsq=(1/trials)*sum(magnsq); %Row Matrix of <M>^2
-magnsusp=tempinv.*(magnsq-expmagnsq); %Magnetic Susceptibility = beta(<E^2>-<E>^2) and beta = 1/kT, where k=1 so 1/T(<E^2>-<E>^2)
+specificheat=tempinvsquared.*(expenergysq-energysq); %specific heat
 
 %PolyVal and Polyfit to create a plot for the general graph 
 x=0.1:0.1:tempf;
 pEnergy=polyfit(Temp,energy,4);%calculates and plots a best fitting curve for each figure
 pMag=polyfit(Temp,magn,4);
 pHeat=polyfit(Temp,specificheat,4);
-pMagnsusp=polyfit(Temp,magnsusp,4);
 yEnergy=polyval(pEnergy,x);
 yMag=polyval(pMag,x);
 yHeat=polyval(pHeat,x);
-yMagnsusp=polyval(pMagnsusp,x);
+
 %The figures, and the plots for each thermodynamic variable is diplayed
 %here 
 figure;
 S(1) = subplot(2,2,1);
 S(2) = subplot(2,2,2);
 S(3) = subplot(2,2,3);
-S(4) = subplot(2,2,4);
+
 %The 4 plots are displayed here 
 plot(S(1),Temp,energy,'o',x,yEnergy) %yEnergy does the polyval and traces the graph 
 title(S(1),'2D Energy vs. Temperature')
@@ -138,7 +133,3 @@ plot(S(3),Temp,specificheat,'o',x,yHeat)
 title(S(3), '2D Specific Heat vs. Temperature')
 xlabel(S(3),'Temperature (J/k)')
 ylabel(S(3),'Specific Heat')
-plot(S(4),Temp,magnsusp,'o',x,yMagnsusp)
-title(S(4), '2d Magnetic Susceptibility vs. Temperature')
-xlabel(S(4),'Temperature (J/k)') 
-ylabel(S(4),'Magnetic Susceptibility')
