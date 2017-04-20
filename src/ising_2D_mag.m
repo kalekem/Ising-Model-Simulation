@@ -14,8 +14,11 @@ trials=30000
 %}
 nrows=input('Please enter lattice size (nrows) '); %Prompt the user to enter the number of rows
 spinarr=randi(2,nrows)*2-3; %creates a lattice of just 1s and -1s
-runs=input('Please enter the number of runs: '); %Prompt the user to enter the number of runs
-trials=input('Please enter the number of trials: '); %Prompt the user to enter the number of trials 
+runs=input('Please enter the number of runs: ');
+%Prompt the user to enter the number of runs: more runs equals more specificity, more accurate data
+trials=input('Please enter the number of trials: '); 
+%Prompt the user to enter the number of trials: more trials equals more
+%data points
 tempf=input('Please enter the Final Temperature Range you wish to investigate: '); %Prompt the user to enter the final temperate 
 
 %Assigned Values that are embeded in the code 
