@@ -34,17 +34,17 @@ end
 %takes care of the choices that the user takes and displays the specified
 %model
 if dimensions==1 %dimensions of 1 runs the 1-D models
-    if strcmp(choice,'s') %if the user chooses 'l', the 1D lattice model is displayed
+    if strcmp(choice,'s') %if the user chooses 's', the 1D spins model is displayed
         ising_1D_lat;    
-    %otherwise the 1D magnetization model is displayed
+    %otherwise the 1D thermodynamic properties model is displayed
     else
      ising_1D_mag;
     end
 %this part of the statement runs the 2D model
 else
-    if strcmp(choice,'s') %if the user chooses 'l' for lattice, the 2D lattice model is displayed
+    if strcmp(choice,'s') %if the user chooses 's' for spins, the 2D spins model is displayed
         ising_2D_lat;
-    else %otherwise the 2D magnetization  model is displayed
+    else %otherwise the 2D thermodynamic properties model is displayed
         ising_2D_mag;
     end
 end
