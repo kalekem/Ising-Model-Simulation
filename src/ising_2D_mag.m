@@ -8,8 +8,8 @@ temperature
 J=1 
 Size of Lattice (nrows) = 25
 tempf=5
-runs=90000
-trials=30000
+runs=10000
+trials=100
 %}
 nrows=input('Please enter lattice size (nrows) '); %Prompt the user to enter the number of rows
 spinarr=randi(2,nrows)*2-3; %creates a lattice of just 1s and -1s
@@ -21,7 +21,7 @@ trials=input('Please enter the number of trials: ');
 tempf=input('Please enter the Final Temperature Range you wish to investigate: '); %Prompt the user to enter the final temperate 
 
 %Assigned Values that are embeded in the code 
-J=1; %The assigned interactino energy of spins 
+J=1; %The assigned interaction energy of spins 
 Temp=zeros(1,tempf*10);
 tempinv=zeros(1,tempf*10);
 Magn=zeros(trials,tempf*10);
@@ -120,7 +120,7 @@ S(1) = subplot(2,2,1);
 S(2) = subplot(2,2,2);
 S(3) = subplot(2,2,3);
 
-%The 4 plots are displayed here 
+%The 3 plots are displayed here 
 plot(S(1),Temp,energy,'o',x,yEnergy) %yEnergy does the polyval and traces the graph 
 title(S(1),'2D Energy vs. Temperature')
 xlabel(S(1),'Temperature (J/k)')

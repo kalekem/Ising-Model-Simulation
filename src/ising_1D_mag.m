@@ -12,8 +12,8 @@ temperature
 J=1 
 Size of Lattice (nrows) = 25
 tempf=5
-runs=90000
-trials=30000
+runs=10000
+trials=100
 %}
 nrows=input('Please enter lattice size (nrows) '); %Prompt the user to enter the number of rows
 spinarr=randi(2,nrows)*2-3; %creates a lattice of just 1s and -1s
@@ -90,9 +90,9 @@ magn=(1/trials)*sum(Magn);
 specificheat=(expenergysq-energysq); %specific heat but need to multiply by 1/T^2
 figure; %plots the energy, magnetization, and specific heat as functions of temperature
 
-S(1) = subplot(3,1,1);
-S(2) = subplot(3,1,2);
-S(3) = subplot(3,1,3);
+S(1) = subplot(2,2,1);
+S(2) = subplot(2,2,2);
+S(3) = subplot(2,2,3);
 
 x=0.1:0.01:tempf;
 pEnergy=polyfit(Temp,energy,tempf); %also calculates and plots a best fitting curve for each figure
