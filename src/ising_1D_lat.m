@@ -47,7 +47,6 @@ for i=1:30*nrows
         end
     end
 end
-figure;
 imagesc(spinarr); %displays the scaled colored image
 title('Spin Arrangement for 1D Model Lattice');
 xlabel('Number of Rows');
