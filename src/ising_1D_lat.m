@@ -39,7 +39,7 @@ for i=1:30*nrows
         spinarr(randrow,randcol)=-spinarr(randrow,randcol);
     %otherwise,if the energy increases then flip the probability of p = e-(beta delta E). 
     else
-        p=exp(E/T); %the probabilty of the energy change, E
+        p=exp(-E/T); %the probabilty of the energy change, E
         if (p>=r) %accept the flips
             spinarr(randrow,randcol)=-spinarr(randrow,randcol);
         else %reject the flips
