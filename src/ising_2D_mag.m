@@ -22,9 +22,9 @@ tempf=input('Please enter the Final Temperature Range you wish to investigate: '
 
 %Assigned Values that are embeded in the code 
 J=1; %The assigned interaction energy of spins 
-Temp=zeros(1,tempf*10);
+Temp=zeros(1,tempf*10); %Initializes the Temp Matrix to Zeros 
 tempinv=zeros(1,tempf*10);
-Magn=zeros(trials,tempf*10);
+Magn=zeros(trials,tempf*10); 
 Energy=zeros(trials,tempf*10);
 ExpEnergysq=zeros(trials,tempf*10); %Matrix of Zeros for expectation of Energy^2
 Magnsq=zeros(trials,tempf*10); %Matrix of zeros for expetation of Magnetization^2
@@ -35,11 +35,19 @@ bottom, right and left neighbors
 %}
 for T=0.10:0.10:tempf
     for i=1:trials+runs
-        randcol=randi(nrows,1);
-        randrow=randi(nrows,1);
-        r=rand;
+        randcol=randi(nrows,1); %generates a random number between one and the number of rows and assigns it to randrow
+        randrow=randi(nrows,1); %generates a random number between one and the number of rows and assigns it to randrow
+        r=rand; 
+        
+        %Circular Spin to spin arrangment, where if the first entry is 1, then the spin is interactin with the last spin on the opposite end of 
+        %the matrix (other side of the matrix)
+        
+        %This entire block is checking to see where the matrix is being traverssed, and making sure that the neighboring spins are interacting with 
+        %one anothoer 
         if (randcol==1)
             coll=nrows;
+            
+        %Column l is column at the left part, and it is interacting with column at the left part 
         else
             coll=randcol-1;
         end
@@ -48,11 +56,16 @@ for T=0.10:0.10:tempf
         else
             colr=randcol+1;
         end
+        
+        %rowd is row at the bottom part 
         if (randrow==1)
             rowd=nrows;
         else
             rowd=randrow-1;
         end
+        
+       %rowu is row at the under paart
+        
         if (randrow==nrows)
             rowu=1;
         else
