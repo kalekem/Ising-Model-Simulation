@@ -82,7 +82,7 @@ for T=0.10:0.10:tempf
            Magn(indexn,indexm) = absmag;
            Arl=spinarr.*circshift(spinarr,[0,-1]); % Calculates the interacton in the right-left direction --changed x, y stays constant 
            Adu= spinarr.*circshift(spinarr,[-1,0]); % Calcuates the interaction in the down-up direction --changed y, x sta \[AliasDelimiter]ys constant
-           Etot=-J*(sum(sum(Arl))+sum(sum(Adu)));
+           Etot=-J*(sum(sum(Arl))+sum(sum(Adu))); %Sum of all energiesCalculates the Energy of interactions from bottom-up-and right left direction
            Energy(indexn,indexm)=Etot;
            Etotsq = Etot^2;
            ExpEnergysq(indexn,indexm)=Etotsq;
@@ -92,17 +92,17 @@ for T=0.10:0.10:tempf
     end
     Index=round(10*T+1);
     Temp(Index) = T;
-    tempinv(Index)= 1/T; %row matrix of 1/Ti 
+    tempinv(Index)= 1/T; %row matrix of 1/Ti to keep track of temperature in each individual spin
 end
 Temp;
 %The Calculations for Energy, Magnetization, Specific Heat and Magnetic
 %Suspetibility are below 
-energy=(1/trials)*sum(Energy);
+energy=(1/trials)*sum(Energy); %This computes the sum of Energy interactions throughout the matrix 
 expenergysq=(1/trials)*sum(ExpEnergysq); %row of matrix of <E^2>
-energysq=energy.*energy;
-magn=(1/trials)*sum(Magn);
+energysq=energy.*energy; %This is used for the specific heat further down in the code 
+magn=(1/trials)*sum(Magn); %Sums up the Mangenization values to compute the final magentization of the matrix
 tempinvsquared=tempinv.*tempinv; %row matrix of 1/T^2
-specificheat=tempinvsquared.*(expenergysq-energysq); %specific heat
+specificheat=tempinvsquared.*(expenergysq-energysq); %specific heat calculation: 1/T (<E^2> - <E>^2)
 
 %PolyVal and Polyfit to create a plot for the general graph 
 x=0.1:0.1:tempf;
@@ -116,9 +116,9 @@ yHeat=polyval(pHeat,x);
 %The figures, and the plots for each thermodynamic variable is diplayed
 %here 
 figure;
-S(1) = subplot(2,2,1);
-S(2) = subplot(2,2,2);
-S(3) = subplot(2,2,3);
+S(1) = subplot(2,2,1); %Plots the Energy of the matrix 
+S(2) = subplot(2,2,2); %Plots the Magnetization of the matrix
+S(3) = subplot(2,2,3); %Plots the Specific Heat of the matrix 
 
 %The 3 plots are displayed here 
 plot(S(1),Temp,energy,'o',x,yEnergy) %yEnergy does the polyval and traces the graph 
