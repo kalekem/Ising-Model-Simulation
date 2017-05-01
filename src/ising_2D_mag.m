@@ -42,30 +42,28 @@ for T=0.10:0.10:tempf
         %Circular Spin to spin arrangment, where if the first entry is 1, then the spin is interactin with the last spin on the opposite end of 
         %the matrix (other side of the matrix)
         
-        %This entire block is checking to see where the matrix is being traverssed, and making sure that the neighboring spins are interacting with 
-        %one anothoer 
+        %if the chosen spin is at the left edge, it's left neighbor is on the right edge
         if (randcol==1)
             coll=nrows;
-            
-        %Column l is column at the left part, and it is interacting with column at the left part 
         else
             coll=randcol-1;
         end
+        %if the chosen spin is at the right edge, it's right neighbor is on the left edge
         if (randcol==nrows)
             colr=1;
         else
             colr=randcol+1;
         end
         
-        %rowd is row at the bottom part 
+        %if the chosen spin is on the top edge, it's neighbor is on the bottom edge
         if (randrow==1)
             rowd=nrows;
         else
             rowd=randrow-1;
         end
         
-       %rowu is row at the under paart
-        
+       
+       %if the chosen spin is on the bottom edge, it's neighbor is on the top edge 
         if (randrow==nrows)
             rowu=1;
         else
