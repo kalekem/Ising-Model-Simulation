@@ -37,14 +37,16 @@ bottom, right and left neighbors
 for T=0.1:0.1:tempf
     spinarr = randi(2,1,nrows)*2 - 3;
     for i=1:trials+runs
-        randcol=randi(nrows,1);
+        randcol=randi(nrows,1);%chooses a random spin
         randrow=randi(1,1);
         r=rand;
+        %if the chosen spin is the leftmost spin, it's left neighbor is the rightmost spin
         if (randcol==1)
             coll=nrows;
         else
             coll=randcol-1;
         end
+        %if the chosen spin is the rightmost spin, it's right neighbor is the leftmost spin
         if (randcol==nrows)
             colr=1;
         else
